@@ -1,4 +1,4 @@
-1) Why must passwords not be stored as plain text?
+1)Why must passwords not be stored as plain text?
 If database is leaked, attacker will get all access to all passwords in db.
 
 2)Why is raw SHA-256 not a good choice for passwords?
