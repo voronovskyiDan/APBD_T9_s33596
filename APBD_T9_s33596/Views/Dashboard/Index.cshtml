@@ -1,0 +1,39 @@
+﻿@using APBD_T9_s33596.ViewModels.Response
+@using Application.DTOs
+@model IEnumerable<NoteViewModel>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Your Dashboard</h2>
+        <a asp-action="AddNote" class="btn btn-primary">Add</a>
+    </div>
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            @foreach (var note in Model)
+            {
+                <div class="row">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>@note.Title</h3>
+                            <p>@note.Content</p>
+                            <p>@note.CreatedAtFormatted</p>
+
+                            <div>
+                                <form method="post" asp-action="DeleteNote" asp-route-id="@note.Id">
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

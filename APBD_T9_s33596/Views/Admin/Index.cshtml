@@ -1,0 +1,32 @@
+﻿@using APBD_T9_s33596.ViewModels.Response
+@model IEnumerable<UserInfoViewModel>
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2>Admin Panel - All Users</h2>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Registered</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Email</td>
+                        <td><span class="badge @(user.Role == "Admin" ? "bg-danger" : "bg-primary")">@user.Role</span></td>
+                        <td>@user.CreatedAtFormatted</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

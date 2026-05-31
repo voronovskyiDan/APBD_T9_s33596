@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        @if (User.Identity != null && User.Identity.IsAuthenticated)
+        {
+            <h1>Welcome back, @User.Identity.Name!</h1>
+
+            <p>You are logged in to UserPanel</p>
+
+            <div>
+                <form method="post" action="/Auth/Logout" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </div>
+        }
+        else
+        {
+            <h1>Welcome to UserPanel</h1>
+
+            <div>
+                <a href="/Auth/Register" class="btn btn-primary">Register</a>
+                <a href="/Auth/Login" class="btn btn-primary">Login</a>
+            </div>
+        }
+    </div>
+</div>
