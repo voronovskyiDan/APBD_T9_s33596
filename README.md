@@ -1,3 +1,12 @@
+RUN:
+Set env variables:(as on screenshot)
+Seed:AdminEmail
+Seed:AdminPassword
+Security:Pepper
+
+DB:
+dotnet ef database update --project Infrastructure --startup-project APBD_T9_s33596
+
 1)If database is leaked, attacker will get all access to all passwords in db.
 
 2)Using plain SHA-256 can lead to "ranbow tables", which are precomputed collections of "password–hash"
