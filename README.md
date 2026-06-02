@@ -4,6 +4,20 @@ Seed:AdminEmail
 Seed:AdminPassword
 Security:Pepper
 
+TEST USER:
+Registrate user on /Auth/Register
+
+ADMIN LOGIN:
+Login under /Auth/Login with credentials specified for admin in env variables(Seed:AdminEmail, Seed:AdminPassword)
+
+PASSWORD HASHING:
+Infrastructure -> Common -> Security -> BCryptPasswordHasher
+
+AUTHENTICATION:
+Program.cs on 18-24 lines
+
+[Authorize]: Entire Admin Controller(Role=Admin), Entire Dashboard Controller
+
 DB:
 dotnet ef database update --project Infrastructure --startup-project APBD_T9_s33596
 
